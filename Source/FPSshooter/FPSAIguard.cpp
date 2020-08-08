@@ -5,6 +5,7 @@
 #include"Perception/PawnSensingComponent.h"
 #include"DrawDebugHelpers.h"
 #include "Math/Vector.h"
+#include "FPSshooter/FPSshooterGameMode.h"
 // Sets default values
 AFPSAIguard::AFPSAIguard()
 {
@@ -30,6 +31,13 @@ void AFPSAIguard::PawnSenseFunction(APawn* Senser)
 		return;
 	}
 	DrawDebugSphere(GetWorld(), Senser->GetActorLocation(), 35.0f, 12, FColor::Black, false, 10.0f);
+
+	AFPSshooterGameMode* GameModer = Cast<AFPSshooterGameMode>(GetWorld()->GetAuthGameMode());
+	if (GameModer) {
+
+		GameModer->GameOver(Senser, false);
+	}
+
 }
 
 void AFPSAIguard::PawnHearComponent(APawn* NoiseInstigator, const FVector& Location, float Volume)

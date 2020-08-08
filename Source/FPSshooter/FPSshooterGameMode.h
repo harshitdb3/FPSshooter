@@ -13,10 +13,14 @@ class AFPSshooterGameMode : public AGameModeBase
 
 public:
 	AFPSshooterGameMode();
+	UFUNCTION()
+	void GameOver(APawn* CharacterBoy, bool bSeenORNot);
+	UFUNCTION(BlueprintImplementableEvent, Category = "aftergame")
+		void AfterGameOver(APawn* CharacterBoy,bool bSeenORNot);
 
-	void GameOver(APawn* CharacterBoy);
-	UFUNCTION(BlueprintImplementableEvent, Category ="aftergame")
-	void AfterGameOver(APawn* CharacterBoy);
+protected:
+	UPROPERTY(EditDefaultsOnly, Category="viewactor")
+	TSubclassOf<AActor>  SpectalatingViewPoint;
 };
 
 

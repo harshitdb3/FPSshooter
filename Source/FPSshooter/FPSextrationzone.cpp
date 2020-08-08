@@ -50,7 +50,7 @@ void AFPSextrationzone::OverlapFunction(UPrimitiveComponent* OverlappedComponent
 		AFPSshooterGameMode* GameModer = Cast<AFPSshooterGameMode>(GetWorld()->GetAuthGameMode());
 		if (GameModer) {
 
-			GameModer->GameOver(CollectorBoy);
+			GameModer->GameOver(CollectorBoy,true);
 		}
 
 
